@@ -1,24 +1,23 @@
-import logo from './logo.svg';
+//pages import
 import './App.css';
+import MainRoutes from "./routes/mainroutes";
+import SearchComponent from "./components/searchcomponent"
+import store from "./redux/store";
+import { Provider } from "react-redux";
+import { createStore } from "redux";
+import { Toaster } from "react-hot-toast";
 
+const Store = createStore(store);
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+    <Toaster position="top-right" reverseOrder={false} />
+    <Provider store={Store}>
+      <div className="App" style={{ display: 'flex', justifyContent: 'space-between' }}>
+        <MainRoutes />
+      </div>
+    </Provider>
+    </>
   );
 }
 
